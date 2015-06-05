@@ -1,0 +1,4 @@
+# vi noise and Data directory
+*~
+*.swp
+Data\

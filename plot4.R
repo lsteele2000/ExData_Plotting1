@@ -21,13 +21,15 @@ plot4_to_png <- function(plotfunc=plot4, filename="plot4.png") {
 
 # create plot4 using the base graphics package,
 plot4<-function() {
-  par(mfcol = c( 2, 2)) # XXX believe this is a a global setting, verify
-
+  
+  prior<-par(mfcol = c( 2, 2)) 
+  
   plot2(long_ylab=FALSE)
   plot3(legend_border=FALSE)
   plot_voltage_vs_time()
   plot_reactive_vs_time()
-  par(mfcol = c( 1,1 )) # lazy restore (if global), should have saved initial vals above
+  
+  par(mfcol = prior) 
 }
 
 plot_voltage_vs_time<-function() {
