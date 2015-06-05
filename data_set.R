@@ -1,7 +1,7 @@
 
 library(dplyr)
-library(lubridate)
 library(sqldf)
+#library(lubridate)
 
 env<-new.env()
 assign("cached_data", NULL, envir=env)
@@ -52,12 +52,7 @@ load_source <- function(
         dbname=tempfile(), file.format=list(header=T,row.names=F,sep=";"))
     )
   close(f)
-  fixup_(dt)
-}
-
-# stub for any additional modification needed to the input set
-fixup_ <-function( dt ) {
-  # add day of week into table
   dt %>% mutate( wkday = weekdays( as.Date(Date,"%d/%m/%Y"), abbreviate = T))
 }
+
 

@@ -36,12 +36,16 @@ plot2 <- function(long_ylab=TRUE) {
           
 }
 
-wkday_axis_values <-function(dt) {
+# project specific hack to get the labels and breaks for the weekday x axis.
+wkday_axis_values <- function(dt) {
     
-    labels <- unique(dt$wkday)
-    breaks <- match(labels, dt$wkday )
+    labels <- unique(dt$wkday)          # get the days of week from the data set
+    breaks <- match(labels, dt$wkday )  # get the first occurrance of each weekday
+
+    # sloppy fixup of right hand end point
     labels<-c(labels,"Sat")
     breaks<-c(breaks, nrow(dt))
+
     data.table( labs=labels, breaks=breaks )
  
 }
